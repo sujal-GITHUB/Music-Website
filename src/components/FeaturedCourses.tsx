@@ -2,6 +2,7 @@
 import Link from "next/link"
 import courseData from "../data/music.json"
 import { BackgroundGradient } from "./ui/background-gradient"
+import Image from "next/image"
 
 interface Course{
     id: number,
@@ -33,8 +34,15 @@ function FeaturedCourses() {
                         <BackgroundGradient
                         className="flex flex-col rounded-[22px] bg-white dark:bg-zinc-900 overflow-hidden h-full max-w-sm">
                             <div className="p-4 sm:p-6 flex flex-col items-center text-center flex-grow">
-                                <img className="oveflow-hidden rounded-md" src={course.image} alt="img" width='70%' />
-                                <p className="text-lg sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">{course.title}</p>
+                            <Image
+                                className="overflow-hidden rounded-md"
+                                    src={course.image}
+                                    alt={course.title}
+                                    width={300} // Set the appropriate width
+                                    height={200} // Set the appropriate height
+                                    layout="responsive" // Optional: For responsive images
+                                    quality={75} // Optional: Adjust quality as needed
+                                />
                                 <p className="text-sm text-neutral-600 dark:text-neutral-400 flex-grow">{course.description}</p>
                                 <Link href={`/courses/${course.slug}`} className="mt-3">
                                 Learn More
